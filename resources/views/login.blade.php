@@ -6,7 +6,7 @@
 	<meta http-equiv="cache-control" content="private, max-age=0, no-cache">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="expires" content="0">
-	<title>Lumino - Login</title>
+	<title>Laravel User Management</title>
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/datepicker3.css" rel="stylesheet">
 	<link href="/css/styles.css" rel="stylesheet">
@@ -30,11 +30,11 @@
 							<div class="form-group">
 								<input class="form-control" placeholder="Password" name="password" type="password" value="">
 							</div>
-							<div class="checkbox">
+							<!-- <div class="checkbox">
 								<label>
 									<input name="remember" type="checkbox" value="Remember Me">Remember Me
 								</label>
-							</div>
+							</div> -->
 							<button type="submit" class="btn btn-primary">Login</button>
 						</fieldset>
 					</form>

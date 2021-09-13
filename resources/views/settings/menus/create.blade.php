@@ -1,35 +1,38 @@
 @extends('templates/main')
 
-@section('title', 'Add User')
+@section('title', 'Add Menu')
 
 @section('content')
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
 				<div class="panel-heading">
-                    Add New User
-                    
+                    Add New Menu
                 </div>
                 <div class="panel-body">
-                    <form action="{{ url('setting/users/save') }}" method="post">
+                    <form action="{{ url('setting/menus/save') }}" method="post">
                         @csrf
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="name">Name *</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Name" required>
+                                    <label for="menuname">Menu Name *</label>
+                                    <input type="text" name="menuname" class="form-control" placeholder="Menu Name" required>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="email">Email *</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                    <label for="menuroute">Menu Route *</label>
+                                    <input type="text" name="menuroute" class="form-control" placeholder="Route" required>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="password">Password *</label>
-                                    <input type="password" name="password" class="form-control" placeholder="Password" autocomplete="new-password" required>
+                                    <label for="menugroups">Menu Groups *</label>
+                                    <select name="menugroups" class="form-control" required>
+                                        @foreach($groups as $key => $d)
+                                            <option value="{{ $d->id }}">{{ $d->description }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +41,7 @@
                                 <button type="submit" class="btn btn-primary pull-right">
                                     <i class="fa fa-save"></i> SAVE
                                 </button>
-                                <a href="{{ url('setting/users') }}" class="btn btn-danger pull-right">
+                                <a href="{{ url('setting/menus') }}" class="btn btn-danger pull-right">
                                     <i class="fa fa-arrow-left"></i> Cancel
                                 </a>
                             </div>

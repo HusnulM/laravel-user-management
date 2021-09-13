@@ -3,7 +3,6 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    
     <div class="panel panel-container">
         <div class="row">
             <div class="col-xs-6 col-md-3 col-lg-3 no-padding">

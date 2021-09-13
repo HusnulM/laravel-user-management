@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Setting;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 use Validator,Redirect,Response;
@@ -21,6 +22,12 @@ class UserController extends Controller
 
     public function edit(){
         return view('settings.users.edit');
+    }
+
+    public function list(){
+        $data['data'] = DB::table('users')
+                        ->get();
+        return json_encode($data);
     }
 
     public function save(Request $request){

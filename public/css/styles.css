@@ -1,5 +1,6 @@
 body {
-  background: #f1f4f7;
+  /* background: #f1f4f7; */
+  background: #19171847;
   padding-top: 60px;
   font-size: 14px;
   color: #444444;
@@ -56,7 +57,7 @@ h3, h4 {
 input.form-control {
   border: 1px solid #ddd;
   box-shadow: none;
-  height: 46px; }
+  height: 35px; }
 
 .bootstrap-table input.form-control {
   height: 34px; }
@@ -196,6 +197,10 @@ a.btn:hover, button:hover {
 a.btn:active, button:active {
   box-shadow: inset 0px 0px 500px rgba(0, 0, 0, 0.1);
   opacity: 1; }
+
+.btn{
+  margin: 2px;
+}
 
 .btn-default, .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default, .btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default[disabled].active, fieldset[disabled] .btn-default.active {
   background-color: #e9ecf2;
