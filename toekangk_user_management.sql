@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 13, 2021 at 07:28 AM
--- Server version: 5.5.16
--- PHP Version: 7.2.1
+-- Host: localhost:3306
+-- Generation Time: Oct 10, 2021 at 04:03 PM
+-- Server version: 10.3.31-MariaDB-cll-lve
+-- PHP Version: 7.3.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,8 +19,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `laravel_user_management`
+-- Database: `toekangk_user_management`
 --
+
+DELIMITER $$
+--
+-- Functions
+--
+$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -35,7 +43,7 @@ CREATE TABLE `failed_jobs` (
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -83,16 +91,27 @@ CREATE TABLE `menuroles` (
 
 INSERT INTO `menuroles` (`menuid`, `roleid`, `created_at`, `updated_at`) VALUES
 (1, 1, NULL, NULL),
+(1, 3, NULL, NULL),
 (2, 1, NULL, NULL),
 (2, 2, NULL, NULL),
-(3, 2, NULL, NULL),
+(2, 4, NULL, NULL),
+(3, 1, NULL, NULL),
+(3, 4, NULL, NULL),
+(4, 1, NULL, NULL),
 (4, 2, NULL, NULL),
+(4, 4, NULL, NULL),
 (5, 1, NULL, NULL),
 (6, 1, NULL, NULL),
 (7, 1, NULL, NULL),
 (8, 1, NULL, NULL),
 (9, 1, NULL, NULL),
-(10, 1, NULL, NULL);
+(10, 1, NULL, NULL),
+(11, 1, NULL, NULL),
+(11, 2, NULL, NULL),
+(11, 4, NULL, NULL),
+(12, 1, NULL, NULL),
+(13, 1, NULL, NULL),
+(13, 4, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -124,7 +143,9 @@ INSERT INTO `menus` (`id`, `name`, `route`, `menugroup`, `created_at`, `updated_
 (8, 'Roles', 'setting/roles', 4, NULL, NULL),
 (9, 'Menu Roles', 'setting/menuroles', 4, NULL, NULL),
 (10, 'User Roles', 'setting/userroles', 4, NULL, NULL),
-(11, 'Laporan Purchase Order', 'reports/purchaseorder', 3, NULL, NULL);
+(11, 'Purchase Order', 'reports/purchaseorder', 3, NULL, NULL),
+(12, 'Penerimaan Barang', 'reports/penerimaan', 3, NULL, NULL),
+(13, 'Outstanding PR', 'reports/outstandingpr', 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -177,7 +198,7 @@ CREATE TABLE `personal_access_tokens` (
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -210,6 +231,17 @@ INSERT INTO `roles` (`id`, `rolename`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `test`
+--
+
+CREATE TABLE `test` (
+  `id` int(11) NOT NULL,
+  `nim` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `userroles`
 --
 
@@ -225,8 +257,8 @@ CREATE TABLE `userroles` (
 --
 
 INSERT INTO `userroles` (`email`, `roleid`, `created_at`, `updated_at`) VALUES
-('husnulmub@gmail.com', 1, NULL, NULL),
-('logistik@gmail.com', 2, NULL, NULL);
+('admin@test.com', 1, NULL, NULL),
+('logistik@gmail.com', 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -250,8 +282,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Administrator', 'husnulmub@gmail.com', NULL, '$2y$12$9A9uglNBHJIWX4qQAWFh4OCuKTGDnycfKLLYr.X6SbWj1A9UeguFy', NULL, NULL, NULL),
-(2, 'Staff Logistik', 'logistik@gmail.com', NULL, '$2y$12$LGfZIyIWBs/SNFIERYFXk.aOiKpGTB7ZkUclIxo2biVzzC8SEYy0W', NULL, NULL, NULL);
+(2, 'Staff Logistik', 'logistik@gmail.com', NULL, '$2y$12$LGfZIyIWBs/SNFIERYFXk.aOiKpGTB7ZkUclIxo2biVzzC8SEYy0W', NULL, NULL, NULL),
+(3, 'Admin', 'admin@test.com', NULL, '$2y$12$7ocjFGwx4XufjLvxOayMhO9bOlmgRgCcp6Lr6891E8pYv6jYAs9GS', NULL, NULL, NULL),
+(4, 'User QA', 'qatest@mail.com', NULL, '$2y$12$EKHxkO16aFspnI.mQePy2OpiLkWnkclXFsdHrOK80RDNp7f85W3li', NULL, NULL, NULL),
+(5, 'User Procurement', 'procurement@mail.com', NULL, '$2y$12$JzxZW9k9iPFEYo2SOL/QaupbrcX3VZJKAYAHWxAaBAvsuQdb8EyIy', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -327,7 +361,7 @@ CREATE TABLE `v_userroles` (
 --
 DROP TABLE IF EXISTS `v_menuroles`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`cpses_toag99xl4g`@`localhost` SQL SECURITY DEFINER VIEW `v_menuroles`  AS  select `c`.`rolename` AS `role`,`b`.`roleid` AS `roleid`,`a`.`name` AS `description`,`b`.`menuid` AS `menuid`,`a`.`route` AS `route`,`a`.`menugroup` AS `menugroup`,`d`.`description` AS `groupname` from (((`menus` `a` join `menuroles` `b` on((`a`.`id` = `b`.`menuid`))) join `roles` `c` on((`b`.`roleid` = `c`.`id`))) join `menugroups` `d` on((`a`.`menugroup` = `d`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_menuroles`  AS SELECT `c`.`rolename` AS `role`, `b`.`roleid` AS `roleid`, `a`.`name` AS `description`, `b`.`menuid` AS `menuid`, `a`.`route` AS `route`, `a`.`menugroup` AS `menugroup`, `d`.`description` AS `groupname` FROM (((`menus` `a` join `menuroles` `b` on(`a`.`id` = `b`.`menuid`)) join `roles` `c` on(`b`.`roleid` = `c`.`id`)) join `menugroups` `d` on(`a`.`menugroup` = `d`.`id`)) ;
 
 -- --------------------------------------------------------
 
@@ -336,7 +370,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`cpses_toag99xl4g`@`localhost` SQL SECURITY D
 --
 DROP TABLE IF EXISTS `v_menus`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`cpses_toag99xl4g`@`localhost` SQL SECURITY DEFINER VIEW `v_menus`  AS  select `a`.`id` AS `id`,`a`.`name` AS `description`,`a`.`route` AS `route`,`a`.`menugroup` AS `menugroup`,`b`.`description` AS `groupname`,`b`.`_index` AS `_index` from (`menus` `a` join `menugroups` `b` on((`a`.`menugroup` = `b`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_menus`  AS SELECT `a`.`id` AS `id`, `a`.`name` AS `description`, `a`.`route` AS `route`, `a`.`menugroup` AS `menugroup`, `b`.`description` AS `groupname`, `b`.`_index` AS `_index` FROM (`menus` `a` join `menugroups` `b` on(`a`.`menugroup` = `b`.`id`)) ;
 
 -- --------------------------------------------------------
 
@@ -345,7 +379,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`cpses_toag99xl4g`@`localhost` SQL SECURITY D
 --
 DROP TABLE IF EXISTS `v_usermenus`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`cpses_toag99xl4g`@`localhost` SQL SECURITY DEFINER VIEW `v_usermenus`  AS  select `a`.`id` AS `id`,`a`.`name` AS `name`,`a`.`email` AS `email`,`b`.`roleid` AS `roleid`,`c`.`rolename` AS `role`,`c`.`rolename` AS `rolename`,`d`.`menuid` AS `menuid`,`e`.`name` AS `menuname`,`e`.`route` AS `route`,`e`.`menugroup` AS `menugroup`,`f`.`description` AS `groupname`,`f`.`icons` AS `groupicon`,`f`.`_index` AS `_index` from (((((`users` `a` join `userroles` `b` on((`a`.`email` = `b`.`email`))) join `roles` `c` on((`b`.`roleid` = `c`.`id`))) join `menuroles` `d` on((`c`.`id` = `d`.`roleid`))) join `menus` `e` on((`d`.`menuid` = `e`.`id`))) join `menugroups` `f` on((`e`.`menugroup` = `f`.`id`))) order by `f`.`_index`,`a`.`id`,`b`.`roleid`,`f`.`id`,`d`.`menuid` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_usermenus`  AS SELECT `a`.`id` AS `id`, `a`.`name` AS `name`, `a`.`email` AS `email`, `b`.`roleid` AS `roleid`, `c`.`rolename` AS `role`, `c`.`rolename` AS `rolename`, `d`.`menuid` AS `menuid`, `e`.`name` AS `menuname`, `e`.`route` AS `route`, `e`.`menugroup` AS `menugroup`, `f`.`description` AS `groupname`, `f`.`icons` AS `groupicon`, `f`.`_index` AS `_index` FROM (((((`users` `a` join `userroles` `b` on(`a`.`email` = `b`.`email`)) join `roles` `c` on(`b`.`roleid` = `c`.`id`)) join `menuroles` `d` on(`c`.`id` = `d`.`roleid`)) join `menus` `e` on(`d`.`menuid` = `e`.`id`)) join `menugroups` `f` on(`e`.`menugroup` = `f`.`id`)) ORDER BY `f`.`_index` ASC, `a`.`id` ASC, `b`.`roleid` ASC, `f`.`id` ASC, `d`.`menuid` ASC ;
 
 -- --------------------------------------------------------
 
@@ -354,7 +388,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`cpses_toag99xl4g`@`localhost` SQL SECURITY D
 --
 DROP TABLE IF EXISTS `v_userroles`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`cpses_toag99xl4g`@`localhost` SQL SECURITY DEFINER VIEW `v_userroles`  AS  select `a`.`id` AS `id`,`a`.`name` AS `name`,`a`.`email` AS `email`,`b`.`roleid` AS `roleid`,`c`.`rolename` AS `role` from ((`users` `a` join `userroles` `b` on((`a`.`email` = `b`.`email`))) join `roles` `c` on((`b`.`roleid` = `c`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_userroles`  AS SELECT `a`.`id` AS `id`, `a`.`name` AS `name`, `a`.`email` AS `email`, `b`.`roleid` AS `roleid`, `c`.`rolename` AS `role` FROM ((`users` `a` join `userroles` `b` on(`a`.`email` = `b`.`email`)) join `roles` `c` on(`b`.`roleid` = `c`.`id`)) ;
 
 --
 -- Indexes for dumped tables
@@ -412,6 +446,18 @@ ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `test`
+--
+ALTER TABLE `test`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `userroles`
+--
+ALTER TABLE `userroles`
+  ADD PRIMARY KEY (`email`,`roleid`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -438,7 +484,7 @@ ALTER TABLE `menugroups`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -462,7 +508,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

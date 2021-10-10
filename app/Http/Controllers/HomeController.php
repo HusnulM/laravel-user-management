@@ -21,13 +21,39 @@ class HomeController extends Controller
         return view('home.dashboard');
     }
 
+    public function barang(){
+        return view('home.example', ["page" => "Halaman Master Barang"]);
+    }
+    
+    public function supplier(){
+        return view('home.example', ["page" => "Halaman Master Supplier"]);
+    }
+    
+    public function pr(){
+        return view('home.example', ["page" => "Halaman Purchase Request"]);
+    }
+    
+    public function po(){
+        return view('home.example', ["page" => "Halaman Purchase Order"]);
+    }
+    
+    public function reportpo(){
+        return view('home.example', ["page" => "Halaman Laporan PO"]);
+    }
+    
+    public function openpr(){
+        return view('home.example', ["page" => "Halaman Open Purchase Request"]);
+    }
+    
+    public function penerimaan(){
+        return view('home.example', ["page" => "Halaman Laporan Penerimaan Barang"]);
+    }
+
     public function login(Request $request){
         $request->validate([
             'email'    => 'required|email:dns',
             'password' => 'required|string'
         ]);
-
-        // $request['email'] = strtolower($request['email']);
 
         $options = [
             'cost' => 12,

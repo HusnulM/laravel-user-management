@@ -20,10 +20,6 @@ class MenuGroupController extends Controller
     }
 
     public function save(Request $request){
-        // $validated = $request->validate([
-        //     'menuname' => 'required|unique:menus|max:255'
-        // ]);
-
         DB::beginTransaction();
         try{
             DB::table('menugroups')->insert([

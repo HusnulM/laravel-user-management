@@ -30,23 +30,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="#">USER MANAGEMENT</a>
+				<a class="navbar-brand" href="{{ url('/') }}">USER MANAGEMENT</a>
 				<ul class="nav navbar-top-links navbar-right">
 					<li class="dropdown">
                         <a class="" data-toggle="dropdown" style="color:white;" href="#">
-						    <!-- <em class="fa fa-user"></em><span class="label label-success"></span> -->
                             <i class="fa fa-user"></i> {{ Auth::user()->name }}
 					    </a>
 						<ul class="dropdown-menu">
-							<!-- <li>
-                                <a href="#" class="btn btn-default">
-                                    <span class="label label-danger"></span>
-                                    <div class="message-body">
-                                        <em class="fa fa-user"></em> <strong> Profile</strong>
-                                    </div>
-                                </a>
-							</li>
-							<li class="divider"></li> -->
 							<li>
 								<form action="{{ url('logout') }}" method="post">
 									@csrf
@@ -65,22 +55,6 @@
 
     <!-- Sidebar -->
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-		<!-- <div class="profile-sidebar">
-			<div class="profile-userpic">
-				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
-			</div>
-			<div class="profile-usertitle active">
-				<div class="profile-usertitle-name"><b>{{ Auth::user()->name }}</b></div>
-				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
-			</div>
-			<div class="clear"></div>
-		</div> -->
-		
-		<!-- <form role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-		</form> -->
 		<ul class="nav menu">
 			<li class=""><a href="{{ url('/') }}"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 			<div class="divider"></div>
@@ -107,11 +81,6 @@
 				   <div class="divider"></div>
                </li>
 			@endforeach
-			
-			<!-- <li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
-			<li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
-			<li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
-			<li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li> -->
 		</ul>
 	</div>
     <!--/.sidebar-->
@@ -139,18 +108,8 @@
 	<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<!-- <script src="/js/chart.min.js"></script>
-	<script src="/js/chart-data.js"></script>
-	<script src="/js/easypiechart.js"></script>
-	<script src="/js/easypiechart-data.js"></script> -->
 	<script src="/js/bootstrap-datepicker.js"></script>
 	<script src="/js/custom.js"></script>
-
-
-<!-- https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap4.min.js -->
-<!-- https://code.jquery.com/jquery-3.5.1.js
-https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js
-https://cdn.datatables.net/1.11.1/js/dataTables.bootstrap4.min.js -->
 
 	<script>
 		$(function(){

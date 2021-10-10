@@ -25,6 +25,14 @@ Route::group(['middleware' => 'guest'], function(){
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'revalidate'], function () {
         Route::get('/dashboard', 'HomeController@dashboard');
+
+        Route::get('/master/barang',   'HomeController@barang')->middleware('checkAuth:master/barang');
+        Route::get('/master/supplier', 'HomeController@supplier')->middleware('checkAuth:master/supplier');
+        Route::get('/procurement/purchaserequest', 'HomeController@pr')->middleware('checkAuth:procurement/purchaserequest');
+        Route::get('/procurement/purchaseorder', 'HomeController@po')->middleware('checkAuth:procurement/purchaseorder');
+        Route::get('/reports/purchaseorder', 'HomeController@reportpo')->middleware('checkAuth:reports/purchaseorder');
+        Route::get('/reports/outstandingpr', 'HomeController@openpr')->middleware('checkAuth:reports/outstandingpr');
+        Route::get('/reports/penerimaan', 'HomeController@penerimaan')->middleware('checkAuth:reports/penerimaan');
     
         Route::get('/setting/users',        'Setting\UserController@index')->middleware('checkAuth:setting/users');
         Route::get('/setting/users/create', 'Setting\UserController@create')->middleware('checkAuth:setting/users');
