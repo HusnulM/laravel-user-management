@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Setting;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use Validator,Redirect,Response;
+use Validator,Redirect,Response,Auth;
 use DB;
 
 class MenuRoleController extends Controller
 {
     public function index(){
         $data = DB::table('v_menuroles')
-        ->orderBy('role',      'asc')
+        ->orderBy('roleid',      'asc')
         ->orderBy('menugroup', 'asc')
         ->orderBy('menuid',    'asc')
         ->get();
@@ -32,7 +32,9 @@ class MenuRoleController extends Controller
             for($i = 0; $i < sizeof($menuid); $i++){
                 $menuroledata = array(
                     'menuid'    => $menuid[$i],
-                    'roleid'    => $request['roleid']
+                    'roleid'    => $request['roleid'],
+                    'createdby' => Auth::user()->email,
+                    'created_at'=> date('Y-m-d H:m:s')
                 );
                 array_push($output, $menuroledata);
             }

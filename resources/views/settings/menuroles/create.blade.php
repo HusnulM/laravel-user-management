@@ -183,7 +183,7 @@
                 "ajax": base_url+'/setting/menus/list',
                 "columns": [
                     { "data": "id" },
-                    { "data": "description" },
+                    { "data": "name" },
                     { "data": "groupname"},
                     {"defaultContent": "<button type='button' class='btn btn-primary btn-sm'><i class='fa fa-check'></i></button>"}
                 ],
@@ -211,7 +211,7 @@
                                 <input type="text" name="itm_idmenu[]" counter="`+count+`" class="form-control materialCode" style="width:100%;" required="true" value="`+ selected_data.id +`" readonly/>
                             </td>
                             <td> 
-                                <input type="text" name="itm_menu[]" counter="`+count+`" class="form-control" style="width:100%;" value="`+ selected_data.description +`" readonly/>
+                                <input type="text" name="itm_menu[]" counter="`+count+`" class="form-control" style="width:100%;" value="`+ selected_data.name +`" readonly/>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-danger btn-sm removePO hideComponent" counter="`+count+`">Remove</button>

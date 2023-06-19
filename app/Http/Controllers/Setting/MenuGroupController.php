@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Setting;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use Validator,Redirect,Response;
+use Validator,Redirect,Response,Auth;
 use DB;
 
 class MenuGroupController extends Controller

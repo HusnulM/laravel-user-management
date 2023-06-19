@@ -38,7 +38,7 @@
                                     @foreach($data as $key => $d)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{ $d->description }}</td>
+                                            <td>{{ $d->menugroup }}</td>
                                             <td style="text-align:center;">
                                                 <a href="" class="btn btn-danger btn-sm">
                                                     <i class="fa fa-trash"></i> DELETE

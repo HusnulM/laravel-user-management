@@ -39,8 +39,8 @@
                                     @foreach($data as $key => $d)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{ $d->description }}</td>
-                                            <td>{{ $d->role }}</td>
+                                            <td>{{ $d->name }}</td>
+                                            <td>{{ $d->rolename }}</td>
                                             <td></td>
                                         </tr>
                                     @endforeach

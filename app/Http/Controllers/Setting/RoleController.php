@@ -37,7 +37,9 @@ class RoleController extends Controller
         DB::beginTransaction();
         try{
             DB::table('roles')->insert([
-                'rolename' => $request['rolename']
+                'rolename' => $request['rolename'],
+                'createdby' => Auth::user()->email,
+                'created_at'=> date('Y-m-d H:m:s')
             ]);
 
             DB::commit();

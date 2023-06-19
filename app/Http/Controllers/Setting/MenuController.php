@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Setting;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Validator,Redirect,Response;
+use Validator,Redirect,Response, Auth;
 use DB;
 
 class MenuController extends Controller
@@ -31,7 +31,9 @@ class MenuController extends Controller
             DB::table('menus')->insert([
                 'name'      => $request['menuname'],
                 'route'     => $request['menuroute'],
-                'menugroup' => $request['menugroups']
+                'menugroup' => $request['menugroups'],
+                'createdby' => Auth::user()->email,
+                'created_at'=> date('Y-m-d H:m:s')
             ]);
 
             DB::commit();

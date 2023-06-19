@@ -30,7 +30,7 @@
                                     <label for="menugroups">Menu Groups *</label>
                                     <select name="menugroups" class="form-control" required>
                                         @foreach($groups as $key => $d)
-                                            <option value="{{ $d->id }}">{{ $d->description }}</option>
+                                            <option value="{{ $d->id }}">{{ $d->menugroup }}</option>
                                         @endforeach
                                     </select>
                                 </div>

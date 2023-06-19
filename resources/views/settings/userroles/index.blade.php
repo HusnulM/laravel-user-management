@@ -40,9 +40,9 @@
                                         <tr>
                                             <td>{{$key+1}}</td>
                                             <td>{{ $d->email }}</td>
-                                            <td>{{ $d->role }}</td>
+                                            <td>{{ $d->rolename }}</td>
                                             <td style="text-align:center;">
-                                                <a href="{{ url('setting/userroles/delete') }}/{{$d->email}}/{{$d->roleid}}" class="btn btn-danger btn-sm">
+                                                <a href="{{ url('setting/userroles/delete') }}/{{$d->userid}}/{{$d->roleid}}" class="btn btn-danger btn-sm">
                                                     <i class="fa fa-trash"></i> DELETE
                                                 </a>
                                             </td>
